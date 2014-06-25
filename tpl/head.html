@@ -16,45 +16,50 @@
           <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="js/bootstrap.min.js"></script>
+		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="js/bootstrap.min.js"></script>
         <script>
-            $(document).ready(function() {
-                var working = false;
-                /* Данный флаг предотвращает отправку нескольких комментариев: */
-                $('form').submit(function(e) {
-                    e.preventDefault();
-                    if (working)
-                        return false;
-                    working = true;
-                    $('#submit').text('Подождите..');
-                    $.post('inc/ajax/submit.php', $(this).serialize(), function(msg) {
-                        /* Отправляем значения формы в submit.php: */
-                        working = false;
-
-                        $('#submit').text('Submit');
-
-                        if (msg.status)
-                                //   Если данные корректны, добавляем сообщение
-                                {
-                                    $('#email_cont').removeClass("has-warning");
-                                    $('#user_cont').removeClass("has-warning");
-                                    $('#message').val('');
-                                    alert("Сообщение сохранено");
-                                }
-                        else
-                        {
-                            //   Если есть ошибки, проходим циклом по объекту
-                            //  msg.errors и выводим их на страницу
-                            $.each(msg.errors, function(k, v) {
-
-                                $('#' + k + '_cont').addClass("has-warning");
-                                alert(v);
-                            });
-                        }
-                    }, 'json');
-                });
-            });
-        </script>
+		$(document).ready(function(){
+   		var working = false;
+		/* Данный флаг предотвращает отправку нескольких комментариев: */
+    	$('form').submit(function(e){
+            e.preventDefault();
+            if(working) return false;
+            working = true;
+			$('#submit').text('Подождите..');
+            $.post('inc/ajax/submit.php',$(this).serialize(),function(msg){
+   			 /* Отправляем значения формы в submit.php: */
+                working = false;
+				
+                $('#submit').text('Submit');
+				
+                if(msg.status)
+   			 //   Если данные корректны, добавляем сообщение
+                {
+                    $('#email_cont').removeClass("has-warning");
+					$('#user_cont').removeClass("has-warning");
+					$('#message').val('');
+					alert("Сообщение сохранено");
+					$.each(msg.message,function(k,v){
+							if(k == 'message'){
+							alert(v);
+							$('#message_list').append("<div>1111111111</div>");
+							}
+					});
+                }
+                else
+                {
+   			 //   Если есть ошибки, проходим циклом по объекту
+   			 //  msg.errors и выводим их на страницу
+                    $.each(msg.errors,function(k,v){
+						
+                    $('#'+k+'_cont').addClass("has-warning");
+                    alert(v);
+                    });
+                }
+            },'json');
+    });
+});
+		</script>
     </head>
