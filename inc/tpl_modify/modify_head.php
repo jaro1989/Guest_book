@@ -1,5 +1,6 @@
 <?php
-ini_set('pcre.backtrack_limit', 1024*1024); // (см. ниже)
+
+ini_set('pcre.backtrack_limit', 1024 * 1024); // (см. ниже)
 
 $DATA['title'] = 'Гостевая книга ';
 
