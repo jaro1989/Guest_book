@@ -54,7 +54,7 @@ function getData() {
 }
 
 function validateUser($user) {
-    if (!preg_match("\b\w{3,50}+$~i", $user)) {
+    if (!preg_match("~^([a-z0-9_\-\.])+$~i", $user)) {
         return FALSE;
     } else {
         return TRUE;
