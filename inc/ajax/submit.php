@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 include ("../func/functions.php");
 
@@ -14,8 +15,8 @@ if (validateUser($arr[user]) and validateEmail($arr[email]) and validateMessage(
     file_put_contents("../../data/data.txt", $info, FILE_APPEND);
     $newInfo = file("../../data/data.txt");
     $i = count($newInfo);
-    $newCaptcha = addslashes(generateCaptcha());
-    echo '{"status":1,"status":"'. $newCaptcha .'", "message":' . $newInfo[$i - 1] . '}';
+
+    echo '{"status":1, "message":' . $newInfo[$i - 1] . '}';
 
 // информация возвращаемая сервером
 } else {
