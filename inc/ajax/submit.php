@@ -1,49 +1,6 @@
 <?php
-
 session_start();
-
-function validateUser($user) {
-    if (strlen($user) < 5 or strlen($user) > 50) {
-        return FALSE;
-    } else {
-        return TRUE;
-    }
-}
-
-function validateEmail($email) {
-    if (!preg_match("~^([a-z0-9_\-\.])+@([a-z0-9_\-\.])+\.([a-z0-9])+$~i", $email)) {
-        return FALSE;
-    } else {
-        return TRUE;
-    }
-}
-
-function validateCaptcha($captcha) {
-    if ($captcha != $_SESSION['answer']) {
-        return FALSE;
-    } else {
-        return TRUE;
-    }
-}
-
-function validateMessage($message) {
-    if (strlen($message) < 50 or strlen($message) > 800) {
-        return FALSE;
-    } else {
-        return TRUE;
-    }
-}
-
-function generateCaptcha() {
-    $a = rand(1, 9);
-    $b = rand(1, 9);
-    
-    $picture = "$a + $b =";
-    $answer = $a + $b;
-    $_SESSION['answer'] = $answer;
-
-    return $picture;
-}
+include ("../func/functions.php");
 
 // принимаем данные пришедшие посредством ajax
 $arr[email] = htmlspecialchars(trim($_POST[email]));
@@ -57,8 +14,8 @@ if (validateUser($arr[user]) and validateEmail($arr[email]) and validateMessage(
     file_put_contents("../../data/data.txt", $info, FILE_APPEND);
     $newInfo = file("../../data/data.txt");
     $i = count($newInfo);
-    $newCaptcha = generateCaptcha();
-    echo '{"status":1, "message":' . $newInfo[$i - 1] . '}';
+    $newCaptcha = addslashes(generateCaptcha());
+    echo '{"status":1,"status":"'. $newCaptcha .'", "message":' . $newInfo[$i - 1] . '}';
 
 // информация возвращаемая сервером
 } else {

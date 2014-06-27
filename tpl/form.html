@@ -1,66 +1,61 @@
-<body style="text-align:center;">
-    <div class="cotainer-fluid col-xs-12 " style="margin: 0 auto;">
+<body>
+    <div class="container ">
         <div class="row">
-            <div class="col-xs-12 ">
+            <form class="form-horizontal" action ="" method="post">
+                <fieldset>
 
-                <form action="" method="post">
+                    <!-- Form Name -->
+                    <legend>Оставьте ваше сообщение</legend>
 
-                    <div class="col-xs-5"></div>
-                    <div id="user_cont"class="form-group col-xs-2">
-                        <label for="exampleInputEmail1">Имя</label>
-                        <input id="user" type="text" class="form-control " name="user" id="exampleInputEmail1" style="margin: 0 auto;" value="{*user*}">
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="userName">Имя</label>
+                        <div id="user_cont" class="col-md-4">
+                            <input id="user" name="user" type="text" placeholder="Представьтесь" class="form-control input-md" required="" value="{*user*}">
+            </div>
+            <p class="help-block" data-name="userName"></p>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="userEmail">Email</label>
+            <div id="email_cont" class="col-md-4">
+                <input id="email" name="email" type="email" placeholder="Оставьте ваш e-mail" class="form-control input-md" required="" value="{*email*}">
+                        </div>
+                        <p class="help-block" data-name="userEmail"></p>
                     </div>
-                    <div class="col-xs-5"></div>
-            </div>
+
+                    <!-- Textarea -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="messageText">Сообщение</label>
+                        <div id="message_cont" class="col-md-4">
+                            <textarea class="form-control" id="message" name="message" placeholder="Введите ваше сообщение"></textarea>
+                        </div>
+                        <p class="help-block" data-name="messageText"></p>
+                    </div>
+
+                    <!-- Prepended text-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="captcha">Защита от роботов</label>
+                        <div class="col-md-4">
+                            <div id="captcha_cont" class="input-group">
+                                <span id="captcha" class="input-group-addon">{*captcha*}</span>
+                                <input id="captcha_val" name="captcha" class="form-control" placeholder="Введите ответ" type="text" required="">
+                            </div>
+                            <p class="help-block" data-name="captcha"></p>
+                        </div>
+                    </div>
+
+                    <!-- Button (Double) -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="resetBtn"></label>
+                        <div class="col-md-8">
+                            <button id="resetBtn" name="resetBtn" type="reset" class="btn btn-inverse">Сбросить</button>
+                            <button id="submit" name="submit" type="submit" class="btn btn-success">Отправить</button>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </form>
         </div>
-        <div class="row">
-            <div class="col-xs-5"></div>
-            <div class="col-xs-2">
-                <div id="email_cont" class="form-group">
-                    <label for="exampleInputPassword1">e-mail</label>
-                    <input id="email" type="text" class="form-control " name="email" style="margin: 0 auto;" value="{*email*}">
-                </div>
-                <div class="col-xs-5"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-5"></div>
-            <div class="col-xs-2">
-                <div id="message_cont" class="form-group">
-                    <label for="exampleInputPassword1">Введите сообщение</label>
-                    <textarea id="message"class="form-control " name="message" rows="7" ></textarea><br />
-                </div>
-                <div class="col-xs-5"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-5"></div>
-            <div class="col-xs-1">
-                <div  class="captha">
-                    <h4 id="captcha"> {*captcha*} </h4>
-
-                </div>
-
-            </div>
-            <div class="col-xs-1">
-                <div id="captcha_cont" class="form-group">
-                    <input id="captcha_val" name="captcha" type="text" class="form-control" >
-
-                </div>
-
-            </div>
-            <div class="col-xs-5"></div>
-        </div>
-        <div class="row">
-            <div class="col-xs-5"></div>
-            <div class="col-xs-2">
-                <div class="form-group">
-                    <button id="submit" type="submit" class="btn btn-primary" value="">Submit</button>
-                </div>
-
-            </div>
-            <div class="col-xs-5"></div>
-        </div>
-    </form>
-
-</div>
+    </div>

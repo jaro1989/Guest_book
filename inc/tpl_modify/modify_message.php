@@ -1,7 +1,5 @@
 <?php
 
-ini_set('pcre.backtrack_limit', 1024 * 1024); // (см. ниже)
-
 $dataGet = getData();
 $DATA['message'] = $dataGet;
 

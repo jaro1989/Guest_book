@@ -16,7 +16,7 @@ $(document).ready(function() {
             if (msg.status)
                     //   Если данные корректны, добавляем сообщение
                     {
-                        $('#captcha').text(msg.captcha);
+                        
                         $('#email_cont').removeClass("has-warning");
                         $('#user_cont').removeClass("has-warning");
                         $('#message_cont').removeClass("has-warning");
@@ -25,10 +25,10 @@ $(document).ready(function() {
                         $('#captcha_val').val('');
                         alert("Сообщение сохранено");
                         $.each(msg.message, function(k, v) {
-                            if (k == 'user') {
+                            if (k === 'user') {
                                 user = v;
                             }
-                            if (k == 'message') {
+                            if (k ==='message') {
                                 mes = v;
                             }
 
@@ -47,18 +47,18 @@ $(document).ready(function() {
                 $.each(msg.errors, function(k, v) {
 
 
-                    if (k == 'captcha') {
+                    if (k === 'captcha') {
                         $('#captcha').text(v);
                         $('#' + k + '_cont').addClass("has-warning");
                         $('#captcha_val').val('');
                     }
-                    if (k == 'user') {
+                    if (k === 'user') {
                         $('#' + k + '_cont').addClass("has-warning");
                     }
-                    if (k == 'email') {
+                    if (k === 'email') {
                         $('#' + k + '_cont').addClass("has-warning");
                     }
-                    if (k == 'message') {
+                    if (k === 'message') {
                         $('#' + k + '_cont').addClass("has-warning");
                     }
                 });

@@ -30,7 +30,7 @@ Imtech.Pager = function() {
                 ((page - 1) * this.paragraphsPerPage) + this.paragraphsPerPage).each(function() {
             html += '<div>' + $(this).html() + '</div>';
         });
-// вставляем контент
+        // вставляем контент
         $(this.pagingContainerPath).html(html);
 //                          #pagingControls,  текущая страница(по умолч. 1), общее число страниц     
         renderControls(this.pagingControlsContainer, this.currentPage, this.numPages());
@@ -42,7 +42,7 @@ Imtech.Pager = function() {
 // блок с навигацией
     var renderControls = function(container, currentPage, numPages) {
 // разметка с навигацией
-        var pagingControls = 'Page: ';
+        var pagingControls = '<h4>Page: ';
         for (var i = 1; i <= numPages; i++) {
             if (i !== currentPage) {
                 pagingControls += '&nbsp;<a href="#" onclick="pager.showPage(' + i + '); return false;">' + i + '</a>&nbsp;';
@@ -51,7 +51,7 @@ Imtech.Pager = function() {
             }
         }
 
-        pagingControls += '';
+        pagingControls += '</h4>';
 
         $(container).html(pagingControls);
     };
