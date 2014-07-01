@@ -54,7 +54,7 @@ function getData() {
 }
 
 function validateUser($user) {
-    if (!preg_match("~^([a-z0-9_\-\.])+$~i", $user)) {
+    if (!preg_match("~^(\w{3,}~i", $user)) {
         return FALSE;
     } else {
         return TRUE;

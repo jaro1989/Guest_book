@@ -42,7 +42,7 @@ Imtech.Pager = function() {
 // блок с навигацией
     var renderControls = function(container, currentPage, numPages) {
 // разметка с навигацией
-        var pagingControls = '<h4>Page: ';
+        var pagingControls = 'Page: ';
         for (var i = 1; i <= numPages; i++) {
             if (i !== currentPage) {
                 pagingControls += '&nbsp;<a href="#" onclick="pager.showPage(' + i + '); return false;">' + i + '</a>&nbsp;';
@@ -51,7 +51,7 @@ Imtech.Pager = function() {
             }
         }
 
-        pagingControls += '</h4>';
+        pagingControls += '';
 
         $(container).html(pagingControls);
     };

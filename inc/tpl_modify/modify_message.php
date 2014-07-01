@@ -1,7 +1,7 @@
 <?php
 
-$dataGet = getData();
-$DATA['message'] = $dataGet;
+$formInfo->getData();
+$DATA['message'] = $formInfo->data;
 
 require_once 'tpl/template_master.php'; // подключаем файл с шаблонизатором
 

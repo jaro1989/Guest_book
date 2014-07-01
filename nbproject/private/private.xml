@@ -5,9 +5,10 @@
         <group>
             <file>file:/C:/WebServers/home/localhost/www/visit_book/js/ajax_script.js</file>
             <file>file:/C:/WebServers/home/localhost/www/visit_book/inc/func/functions.php</file>
-            <file>file:/C:/WebServers/home/localhost/www/visit_book/index.php</file>
+            <file>file:/C:/WebServers/home/localhost/www/visit_book/tpl/head.html</file>
             <file>file:/C:/WebServers/home/localhost/www/visit_book/tpl/message.html</file>
             <file>file:/C:/WebServers/home/localhost/www/visit_book/tpl/form.html</file>
+            <file>file:/C:/WebServers/home/localhost/www/visit_book/inc/ajax/submit.php</file>
             <file>file:/C:/WebServers/home/localhost/www/visit_book/js/paginator.js</file>
             <file>file:/C:/WebServers/home/localhost/www/visit_book/js/page_realize.js</file>
         </group>

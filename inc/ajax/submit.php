@@ -1,9 +1,15 @@
 <?php
-
 session_start();
-include ("../func/functions.php");
+//include ("../func/functions.php");
+include ("../../classes/Form.php");
+include ("../../classes/Submit.php");
+$newMessage = new Submit($_POST[user],$_POST[email],$_POST[message],$_POST[captcha]);
+echo $newMessage->validateAll();
+echo $newMessage->getNewInfo();
 
-// принимаем данные пришедшие посредством ajax
+
+
+/*/* принимаем данные пришедшие посредством ajax
 $arr[email] = htmlspecialchars(trim($_POST[email]));
 $arr[user] = htmlspecialchars(trim($_POST[user]));
 $arr[captcha] = htmlspecialchars(trim($_POST[captcha]));
@@ -34,6 +40,6 @@ if (validateUser($arr[user]) and validateEmail($arr[email]) and validateMessage(
     }
 
     $arr = $errors;
-    /* Вывод сообщений об ошибке */
+    /* Вывод сообщений об ошибке 
     echo '{"status":0, "errors":' . json_encode($arr) . '}';
-}
+}*/

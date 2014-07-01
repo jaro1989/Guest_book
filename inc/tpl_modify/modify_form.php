@@ -1,7 +1,9 @@
 ﻿<?php
-$DATA['user'] = sessionUser();
-$DATA['email'] = sessionEmail();
-$DATA['captcha'] = generateCaptcha();
+$formInfo = new Form();
+$DATA['user'] = $formInfo->user;
+$DATA['email'] = $formInfo->email;
+$formInfo->generateCaptcha();
+$DATA['captcha'] = $formInfo->picture;
 
 require_once 'tpl/template_master.php'; // подключаем файл с шаблонизатором
 
