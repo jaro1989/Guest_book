@@ -4,13 +4,13 @@ Class Form {
 
     public $user = "Anounimus";
     public $email = "Введите E-MAIL";
-    private $dataDir = "data/data.txt";
-    public $captcha = "";
-    public $message = "";
+    protected $dataDir = "data/data.txt";
+    protected $captcha = "";
+    protected $message = "";
     public $data;
     public $picture;
-    private $answer;
-
+    protected $answer;
+   
     public function __construct($sessionName = "Anounimus", $sessionEmail = "Введите E-MAIL") {
 
         $this->user = $sessionName;
@@ -22,7 +22,7 @@ Class Form {
         if (!isset($_SESSION["email"])) {
             $_SESSION["email"] = $this->email;
         }
-        return $this->user;
+        
     }
 
     public function getData() {
@@ -65,7 +65,7 @@ Class Form {
         }
     }
 
-    public function validateMessage() {
+    protected function validateMessage() {
         if (strlen($this->message) < 50 or strlen($this->message) > 800) {
             return FALSE;
         } else {

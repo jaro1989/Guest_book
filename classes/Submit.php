@@ -1,23 +1,30 @@
 <?php
 
+include("Form.php");
+
 Class Submit extends Form {
 
+    public $ajaxInfo = "";
     private $info = "";
 
     public function __construct($user, $email, $message, $captcha) {
+        parent::__construct($user, $email);
+
         $this->user = htmlspecialchars(trim($user));
         $this->email = htmlspecialchars(trim($email));
         $this->message = htmlspecialchars(trim($message));
         $this->captcha = htmlspecialchars(trim($captcha));
+        $this->validateAll();
     }
 
-    public function validateAll() {
+    private function validateAll() {
         if (parent::validateUser() and
                 parent::validateEmail() and
                 parent::validateCaptcha() and
                 parent::validateMessage()) {
-            $this->info = array("user" => $this->user, "email" => $this->email, "message" => $this->message);
+            $this->info = json_encode(array("user" => $this->user, "email" => $this->email, "message" => $this->message)) . "\n";
             file_put_contents("../../" . $this->dataDir, $this->info, FILE_APPEND);
+            $this->getNewInfo();
         } else {
             if (!parent::validateUser()) {
                 $errors[user] = "Введите правильное имя";
@@ -30,17 +37,15 @@ Class Submit extends Form {
                 parent::generateCaptcha();
                 $errors[captcha] = $this->picture;
             }
-            return '{"status":0, "errors":' . json_encode($errors) . '}';
+            $this->ajaxInfo = '{"status":0, "errors":' . json_encode($errors) . '}';
         }
     }
 
-    public function getNewInfo() {
+    private function getNewInfo() {
         if ($this->info != "") {
             $ajaxContent = file("../../" . $this->dataDir);
             $i = count($ajaxContent);
-            return '{"status":1, "message":' . $ajaxContent[$i - 1] . '}';
-        } else {
-            return '{"status":0, "message":"No DATA"}';
+            $this->ajaxInfo = '{"status":1, "message":' . $ajaxContent[$i - 1] . '}';
         }
     }
 
