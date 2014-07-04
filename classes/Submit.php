@@ -6,7 +6,13 @@ Class Submit extends Form {
 
     public $ajaxInfo = "";
     private $info = "";
-
+    /**
+     * 
+     * @param string $user  Имя пользователя
+     * @param string $email Почта
+     * @param string $message Сообщение
+     * @param string $captcha Ответ пользователя на капчу
+     */
     public function __construct($user, $email, $message, $captcha) {
         parent::__construct($user, $email);
 
@@ -16,7 +22,9 @@ Class Submit extends Form {
         $this->captcha = htmlspecialchars(trim($captcha));
         $this->validateAll();
     }
-
+    /**
+     * Валидация формы
+     */
     private function validateAll() {
         if (parent::validateUser() and
                 parent::validateEmail() and
@@ -40,7 +48,9 @@ Class Submit extends Form {
             $this->ajaxInfo = '{"status":0, "errors":' . json_encode($errors) . '}';
         }
     }
-
+    /**
+     * Получение последнего добавленного сообщения для отправки через ajax
+     */
     private function getNewInfo() {
         if ($this->info != "") {
             $ajaxContent = file("../../" . $this->dataDir);

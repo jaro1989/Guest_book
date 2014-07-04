@@ -15,7 +15,7 @@ if (isset($_GET['page']) && isset($_GET['mesNum'])) {
 
 //Получение свойств объектов
 $formInfo->generateCaptcha();
-$messenger->makePaginator();
+$messenger->getPaginator();
 $messenger->getMessages();
 $messenger->getCounter();
 
@@ -28,11 +28,14 @@ $DATA['message'] = $messenger->htmlMessages;
 $DATA['paginator'] = $messenger->htmlPaginator;
 $DATA['counter'] = $messenger->htmlCounter;
 
-require_once 'tpl/template_master.php'; // подключаем файл с шаблонизатором
+// подключаем файл с шаблонизатором
+require_once 'tpl/template_master.php'; 
 
-$tpl = 'tpl/tpl.html'; // путь к шаблону
+// путь к шаблону
+$tpl = 'tpl/tpl.html'; 
 
-$html = websun_parse_template_path($DATA, $tpl); // запуск шаблонизатора
+// запуск шаблонизатора
+$html = websun_parse_template_path($DATA, $tpl); 
 
 echo $html;
 

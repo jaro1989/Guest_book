@@ -11,13 +11,21 @@ Class Messanger {
     private $mesNum;
     private $dataEncode;
 
+    /**
+     * 
+     * @param int $pageNum Порядковый номер страницы
+     * @param int $mesNum Колличество выводимых сообщений
+     */
     public function __construct($pageNum = 1, $mesNum = 5) {
         $this->pageNum = $pageNum;
         $this->mesNum = $mesNum;
         $this->data = file($this->dataDir);
     }
 
-    public function makePaginator() {
+    /**
+     * Выводит "Пагинатор"
+     */
+    public function getPaginator() {
         $pages = (int) count($this->data) / $this->mesNum + 1;
         for ($i = 1; $i <= $pages; $i++) {
             if ($i == $this->pageNum) {
@@ -28,6 +36,9 @@ Class Messanger {
         }
     }
 
+    /**
+     * Выводит сообщения
+     */
     public function getMessages() {
         $this->getData();
         $this->dataDecode = array_reverse($this->dataDecode);
@@ -43,6 +54,9 @@ Class Messanger {
         }
     }
 
+    /**
+     * Получение данных из файла
+     */
     private function getData() {
         foreach ($this->data as $value) {
 
@@ -50,6 +64,9 @@ Class Messanger {
         }
     }
 
+    /**
+     * Выводит "селектор" колличества выводимых сообщений
+     */
     public function getCounter() {
         $this->htmlCounter .= "<form action = 'index.php' method='get'>";
         $this->htmlCounter .= "<select id='myselect' onchange='submit()' name='mesNum' class='form-control col-xs-1'>";
