@@ -52,7 +52,7 @@ Class Form {
     /**
      * 
      * @return boolean
-     * Валидация Имени пользователя
+     * Валидация почтового адреса
      */
     protected function validateEmail() {
         if (!preg_match("~^([a-z0-9_\-\.])+@([a-z0-9_\-\.])+\.([a-z0-9])+$~i", $this->email)) {
@@ -64,7 +64,7 @@ Class Form {
     /**
      * 
      * @return boolean
-     * Валидация Имени пользователя
+     * генерация капчи
      */
     public function generateCaptcha() {
         $a = rand(1, 9);
