@@ -65,7 +65,7 @@ Class Messanger {
     }
 
     /**
-     * Выводит "селектор" колличества выводимых сообщений
+     * Выводит "селектор" количества выводимых сообщений
      */
     public function getCounter() {
         $this->htmlCounter .= "<form action = 'index.php' method='get'>";
