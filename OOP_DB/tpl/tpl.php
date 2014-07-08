@@ -28,14 +28,19 @@
         <div class="container ">
             <div class="row">
                 <div class="col-md-8 col-xs-offset-2">
-                    <?php $form->render(); ?>
+                    
+                    <?php $form->render(); //Вывод формы. $form - объект класса Form ?>
                 
             </div>
         </div>
 
         <div class="row">
             <div id ="message_list" class="col-md-4 col-xs-offset-4">
-               <?php Messanger::renderMessages($paginator->getResults());	?>
+               <?php 
+               ////Вывод сообщений. 
+               //$paginator - объект класса Pagination
+               Messanger::renderMessages($paginator->getResults());
+               ?>
             </div>
         </div>
         <div class="row">
