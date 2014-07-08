@@ -18,7 +18,7 @@ class Storage implements Data{
 		private function connect(){
 			
 			if($this->type == 1){
-				$this->dsn = 'mysql:dbname=messages;host=127.0.0.1';
+				$this->dsn = 'mysql:dbname=messanger;host=127.0.0.1';
 				$this->user = 'root';
 				$this->password = '';
 				try {
