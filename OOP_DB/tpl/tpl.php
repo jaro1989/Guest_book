@@ -37,7 +37,7 @@
         <div class="row">
             <div id ="message_list" class="col-md-4 col-xs-offset-4">
                <?php 
-               ////Вывод сообщений. 
+               //Вывод сообщений. 
                //$paginator - объект класса Pagination
                Messanger::renderMessages($paginator->getResults());
                ?>
