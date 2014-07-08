@@ -5,7 +5,7 @@ use PFBC\Validation;
 if(isset($_POST["form"])) {
 	Form::isValid($_POST["form"]);
 	$newMessage = new Storage(1);
-    $newMessage->putData($_POST['User'], $_POST['Email'], $_POST['Message']);
+    	$newMessage->putData($_POST['User'], $_POST['Email'], $_POST['Message']);
 	header("Location: " . $_SERVER["PHP_SELF"]);
 	exit();	
 }
